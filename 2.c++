@@ -1,26 +1,23 @@
-//WAP to illustrate the concept of different types of constructor.
-#include<iostream>
-#include<conio.h>
+//WAP to illustrate the concept of destructor.
 
+#include<iostream>
+// #include<conio.h>
 using namespace std;
 class constructor
 {
     private:
     int x,y;
     public:
-    //Default Constructor
     constructor()
     {
         x=0;
         y=0;
     }
-    //Parameterized Constructor
     constructor(int x1,int y1)
     {
         x=x1;
         y=y1;
     }
-    //Copy Constructor
     constructor(constructor&c)
     {
         x=c.x;
@@ -30,15 +27,22 @@ class constructor
     {
         cout<<"X="<<x<<endl<<"Y="<<y<<endl;
     }
+    ~constructor()
+    {
+        cout<<"The object value is destroyed"<<endl;
+        
+    }
+
 };
+
 int main()
 {
-    constructor c1; //Default constructor is called
+    constructor c1; 
     c1.display();
-    constructor c2(10,20);//Parameterized Constructor is called
+    constructor c2(10,20);
     c2.display();
-    constructor c3(c1); //Copy constructor is called and the value of default constructor is copied
+    constructor c3(c1); 
     c3.display();
-    getch();
+    // getch();
     return 0;
 }
