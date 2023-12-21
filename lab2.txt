@@ -1,0 +1,374 @@
+OOP LAB 2 Questions
+1.//WAP to illustrate the concept of different types of constructor.
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+class constructor
+{
+    private:
+    int x,y;
+    public:
+    //Default Constructor
+    constructor()
+    {
+        x=0;
+        y=0;
+    }
+    //Parameterized Constructor
+    constructor(int x1,int y1)
+    {
+        x=x1;
+        y=y1;
+    }
+    //Copy Constructor
+    constructor(constructor&c)
+    {
+        x=c.x;
+        y=c.y;
+    }
+    void display()
+    {
+        cout<<"X="<<x<<endl<<"Y="<<y<<endl;
+    }
+};
+int main()
+{
+    constructor c1; //Default constructor is called
+    c1.display();
+    constructor c2(10,20);//Parameterized Constructor is called
+    c2.display();
+    constructor c3(c1); //Copy constructor is called and the value of default constructor is copied
+    c3.display();
+    getch();
+    return 0;
+}
+
+OUTPUT:
+X=0
+Y=0
+X=10
+Y=20
+X=0
+Y=0
+
+2.//WAP to illustrate the concept of destructor.
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class constructor
+{
+    private:
+    int x,y;
+    public:
+    constructor()
+    {
+        x=0;
+        y=0;
+    }
+    constructor(int x1,int y1)
+    {
+        x=x1;
+        y=y1;
+    }
+    constructor(constructor&c)
+    {
+        x=c.x;
+        y=c.y;
+    }
+    void display()
+    {
+        cout<<"X="<<x<<endl<<"Y="<<y<<endl;
+    }
+    ~constructor()
+    {
+        cout<<"The object value is destroyed"<<endl;
+        
+    }
+
+};
+
+int main()
+{
+    constructor c1; 
+    c1.display();
+    constructor c2(10,20);
+    c2.display();
+    constructor c3(c1); 
+    c3.display();
+    getch();
+    return 0;
+}
+
+OUTPUT:
+X=0
+Y=0
+X=10
+Y=20
+X=0
+Y=0
+The object value is destroyed
+The object value is destroyed
+The object value is destroyed
+
+3.//Create a class named time with data members second, minute, hour, and day. Initialize all the data members using constructors and use necessary member functions to add two times and display the result in main().
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class Time
+{
+    private:
+    int sec,min,hr,day;
+    public:
+    Time()
+    {
+        sec=0;
+        min=0;
+        hr=0;
+        day=0;
+    } 
+    Time(int sec1,int min1,int day1,int hr1)
+    {
+        sec=sec1;
+        min=min1;
+        hr=hr1;
+        day=day1;
+    }
+    Time calc(Time t1,Time t2)
+    {
+        Time t3;
+        t3.sec=t1.sec+t2.sec;
+        t3.min=t1.min+t2.min+t3.sec/60;
+        t3.sec=t3.sec%60;
+        t3.hr=t1.hr+t2.hr+t3.min/60;
+        t3.min=t3.min%60;
+        t3.day=t1.day+t2.day+t3.hr/24;
+        t3.hr=t3.hr%24;
+        return t3;
+    }
+    void display()
+    {
+        cout<<"Days="<<day<<endl<<"Hours="<<hr<<endl<<"Minutes="<<min<<endl<<"Seconds="<<sec<<endl;
+        
+    }
+};
+int main()
+{
+    Time t4(60,60,2,1),t5(120,120,1,2),t6;
+    t6=t6.calc(t4,t5);
+    t6.display();
+    getch();
+    return 0;
+}
+
+OUTPUT:
+Days=3
+Hours=6
+Minutes=3
+Seconds=0
+
+4.// Create a class named complex with data members real and imaginary. Initialize all the data members using constructors and use necessary member functions to add two complex numbers and display the result in main().
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class complex
+{
+    private:
+      int real,img;
+    public:
+    complex()
+    {
+        real=0;
+        img=0;
+    }
+    complex(int real1,int img1 )
+    {
+        real=real1;
+        img=img1;
+    }
+    complex add(complex c1,complex c2)
+    {
+        complex c3;
+        c3.real=c1.real+c2.real;
+        c3.img=c1.img+c2.img;
+        return(c3);
+    }
+    void display()
+    {
+        cout<<"Real="<<real<<endl<<"Imaginary="<<img<<endl;
+    }
+};
+int main()
+{
+    complex c4(2,3),c5(4,5),c6;
+    c6=c6.add(c4,c5);
+    c6.display();
+    getch();
+    return 0;
+}
+
+OUTPUT:
+Real=6
+Imaginary=8
+
+5.// Create a class named distance with data members feet and inch. Initialize all data members using constructors and use necessary member functions to add two distances and display the result in main().
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class dist
+{
+    private:
+    int ft,inch;
+    public:
+    dist()
+    {
+        ft=0;
+        inch=0;
+    }
+    dist(int ft1,int inch1)
+    {
+        ft=ft1;
+        inch=inch1;
+    }
+
+    dist add(dist d1,dist d2)
+    {
+        dist d3;
+        d3.inch=d1.inch+d2.inch;
+        d3.ft=d1.ft+d2.ft+d3.inch/12;
+        d3.inch=d3.inch%12;
+        return(d3);
+
+    }
+    void display()
+    {
+        cout<<"Feet="<<ft<<endl<<"inch="<<inch<<endl;
+
+    }
+};
+int main()
+{
+    dist d4(1,24),d5(2,12),d6;
+    d6=d6.add(d4,d5);
+    d6.display();
+    getch();
+    return 0;
+}
+
+OUTPUT:
+Feet=6
+inch=0
+
+6.// Create a class named vector with necessary data members. Initialize all data members using constructors and use necessary member functions to calculate the sum of two vectors and display the result in main().
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class vector
+{
+    private:
+    int x,y;
+    public:
+    vector()
+    {
+        x=0;
+        y=0;
+    }
+    vector(int x1,int y1)
+    {
+        x=x1;
+        y=y1;
+    }
+    vector add(vector v1,vector v2)
+    {
+        vector v3;
+        v3.x=v1.x+v2.x;
+        v3.y=v1.y+v2.y;
+        return(v3);
+    }
+    void display()
+        {
+            cout<<"X="<<x<<endl<<"Y="<<y<<endl;
+        }
+};
+int main()
+{
+    vector v4(1,2),v5(2,3),v6;
+    v6=v6.add(v4,v5);
+    v6.display();
+    getch();
+    return 0;
+}
+
+OUTPUT:
+X=3
+Y=5
+
+7.Write short notes on static data members and static member functions.
+
+Static Data Members:
+In C++, a static data member is a class or struct member that is shared by all instances of the class or struct. It exists independently of any specific object of the class and is associated with the class itself rather than with instances of the class. 
+To declare a static data member in a class, we use the 'static' keyword followed by the data type and the member name. The declaration is typically done in the class definition, outside of any member functions and the static data member must be defined separately in one of the source files (not in the class definition). This is usually done using the class name and the scope resolution operator '::'.
+
+Example:
+#include <iostream.h>
+#include<conio.h>
+using namespace std;
+
+class First {
+public:
+    static int staticDataMember;
+    // other class members
+
+    First() {
+        // Constructor 
+    }
+};
+
+// Definition and initialization of the static data member
+int First::staticDataMember = 42;
+
+int main() {
+    // Accessing the static data member without creating an object
+    int value = First::staticDataMember;
+
+    cout << "Static Data Member Value: " << value << endl;
+
+    // Other code
+    getch();
+    return 0;
+}
+
+Static Member Functions:
+In C++, a static member function is a function that belongs to a class rather than to instances of the class. It is denoted by the 'static' keyword in the function declaration. The use of the 'static' keyword in the class definition is done to declare a static member function. Static member functions do not have access to the pointer and can only directly access static members (both data members and other static member functions). Like static data members, the definition of static member functions is done outside the class definition. The 'static' keyword is used again in the definition. Static member functions are useful when the function does not depend on any specific instance of the class and does not modify non-static members. They are often used for utility functions, operations on static data members, or operations that are independent of instance-specific data.
+
+Example:
+#include <iostream.h>
+#include<conio.h>
+using namespace std;
+
+class Math{
+public:
+    // Static member function to add two numbers
+    static int add(int a, int b) {
+        return a + b;
+    }
+
+};
+
+int main() {
+    // Calling static member functions without creating an object
+    int sum = Math::add(3, 4);
+    cout << "Sum: " << sum << endl;
+    getch();
+    return 0;
+}
+
+
+
+
+
+
+
+
+
